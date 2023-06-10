@@ -1,34 +1,43 @@
-"Adams":
-  - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+"Lifshitz":
+  - firstname: ["Shalev"]
+    url: https://shalev.ca/
 
-"Podolsky":
-  - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
+"Chan":
+  - firstname: ["Harris"]
+    url: https://harrischan.com/
 
-"Rosen":
-  - firstname: ["Nathan", "N."]
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+"Ba":
+  - firstname: ["Jimmy"]
+    url: https://jimmylba.github.io/
 
-"Bach": 
-  - firstname: ["Johann Sebastian", "J. S."]
-    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+"McIlraith": 
+  - firstname: ["Sheila", "Sheila A."]
+    url: https://www.cs.toronto.edu/~sheila/
 
-  - firstname: ["Carl Philipp Emanuel", "C. P. E."]
-    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach
+"Zhou":
+  - firstname: ["Yongchao"]
+    url: https://twitter.com/Yongchao_Zhou_
 
-"Przibram":
-  - firstname: ["Karl"]
-    url: https://link.springer.com/article/10.1007/s00016-019-00242-z
+"Muresanu":
+  - firstname: ["Andrei", "Andrei Ioan"]
+    url: https://www.linkedin.com/in/andrei-muresanu-b25a15165/
 
-"Schrödinger":
-  - firstname: ["Erwin"]
-    url: https://en.wikipedia.org/wiki/Erwin_Schr%C3%B6dinger
+"Han":
+  - firstname: ["Ziwen"]
+    url: https://www.ziwenhan.com/
 
-"Lorentz":
-  - firstname: ["Hendrik Antoon"]
-    url: https://en.wikipedia.org/wiki/Hendrik_Lorentz
+"Pitis":
+  - firstname: ["Silviu"]
+    url: https://silviupitis.com/
 
-"Planck":
-  - firstname: ["Max"]
-    url: https://en.wikipedia.org/wiki/Max_Planck
+"McKinney":
+  - firstname: ["Lev", "Lev E"]
+    url: https://www.linkedin.com/in/lev-mckinney-7ba58a177/?originalSubdomain=ca/
+
+"Zhang":
+  - firstname: ["Michael", "Michael R."]
+    url: https://www.cs.toronto.edu/~michael/
+
+"Abbeel":
+  - firstname: ["Pieter"]
+    url: https://people.eecs.berkeley.edu/~pabbeel/

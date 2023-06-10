@@ -2,25 +2,20 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
 
-news: true  # includes a list of news items
-latest_posts: true  # includes a list of the newest posts
+news: false  # includes a list of news items
+latest_posts: false  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a fifth-year PhD student in the [Department of Computer Science](https://web.cs.toronto.edu/) at the [University of Toronto](https://www.utoronto.ca/). I am fortunate to be advised by [Jimmy Ba](https://jimmylba.github.io/) and [Sheila McIlraith](https://www.cs.toronto.edu/~sheila/). I am also affiliated with the [Vector Institute](https://vectorinstitute.ai/).
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+My research interests are in the intersection of decision-making and sequence modeling. In particular, can the same approaches used for ChatGPT and image captioning be used to *plan*, *act*, and *reason*? What are the limitations of this approach compared to other methods for sequential decision-making such as reinforcement learning? Can we leverage these insights in combination with powerful, pretrained sequence models to create generalist agents that can solve a variety of tasks and surpass human capability and knowledge?
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+<!-- My research journey started during my undergrad at UC Berkeley, where I worked with Pieter Abbeel and Sergey Levine on multi-agent reinforcement learning. When I started my PhD, I became interested in how simple sequence modeling approaches can be used in place of reinforcement learning. In my research on the topic, I discovered an [explicit relationship between optimal planning and sequence modeling](https://arxiv.org/abs/2012.02419), explored the limitations of such an approach in [stochastic environments](https://arxiv.org/abs/2205.15967), and created a [state-of-the-art agent for Minecraft](https://arxiv.org/abs/2306.00937) which can follow text instructions and solve a variety of tasks in the game. -->
