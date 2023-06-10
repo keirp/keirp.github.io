@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://keirp.github.io/sitemap.xml
+Sitemap: https://keirp.com/sitemap.xml
