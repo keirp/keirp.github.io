@@ -10,7 +10,7 @@
   - firstname: ["Jimmy"]
     url: https://jimmylba.github.io/
 
-"McIlraith": 
+"McIlraith":
   - firstname: ["Sheila", "Sheila A."]
     url: https://www.cs.toronto.edu/~sheila/
 
@@ -49,3 +49,31 @@
 "Santos":
   - firstname: ["Marco Dos"]
     url: https://twitter.com/dsantosmarco
+
+"Dos Santos":
+  - firstname: ["Marco"]
+    url: https://marco-dossantos.github.io/
+
+"Schoelkopf":
+  - firstname: ["Hailey"]
+    url: https://twitter.com/haileysch__
+
+"McAleer":
+  - firstname: ["Stephen"]
+    url: https://www.andrew.cmu.edu/user/smcaleer/
+
+"Jiang":
+  - firstname: ["Albert Q."]
+    url: https://albertqjiang.github.io/
+
+"Deng":
+  - firstname: ["Jia"]
+    url: https://www.cs.princeton.edu/~jiadeng/
+
+"Biderman":
+  - firstname: ["Stella"]
+    url: https://www.stellabiderman.com/"
+
+"Welleck":
+  - firstname: ["Sean"]
+    url: https://wellecks.com/
