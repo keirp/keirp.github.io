@@ -21,5 +21,5 @@ I am a fifth-year PhD student in the [Department of Computer Science](https://we
 My research interests lie in AI reasoning. Research highlights include:
 
 - **Automatic prompt engineering** (resulting in a popular [prompting trick that gives insight into the psychology of GPT](https://twitter.com/karpathy/status/1624847051426234368)).
-- **OpenWebMath**, a dataset of all the mathematical documents on the web, and **Llemma**, the best open language model for mathematical reasoning.
+- **OpenWebMath**, a dataset of all the mathematical documents on Common Crawl, and **Llemma**, the best open language model for mathematical reasoning.
 - **STEVE-1**, a Minecraft agent that can follow visual and text instructions using only keyboard and mouse commands.
