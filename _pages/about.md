@@ -20,7 +20,7 @@ I am a fifth-year PhD candidate in the [Department of Computer Science](https://
 - I am also affiliated with the [Vector Institute](https://vectorinstitute.ai/).
 - In Fall 2023, I was a student researcher at Google working on data efficiency for LLMs with the [Gemini](https://deepmind.google/technologies/gemini) and [Blueshift](https://research.google/teams/blueshift/) teams.
 
-My research interests lie in AI reasoning and decision-making and my goal is to create AI systems that effectively process the information in the world in order to fast-forward scientific progress.
+My research interests lie in AI reasoning and decision-making and my goal is to create AI systems that effectively process the world’s information in order to fast-forward scientific progress.
 
 Research highlights from the last year include:
 
