@@ -9,7 +9,7 @@ profile:
   image_circular: false # crops the image to make it circular
 
 news: false # includes a list of news items
-latest_posts: false # includes a list of the newest posts
+latest_posts: true # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
@@ -18,7 +18,7 @@ I am a fifth-year PhD student in the [Department of Computer Science](https://we
 
 In 2023, I was a student researcher at Google working on data efficiency for LLMs with the Gemini and Blueshift teams.
 
-My research interests lie in AI reasoning. Research highlights include:
+My research interests lie in AI reasoning and decision-making. Research highlights include:
 
 - **Automatic prompt engineering** (resulting in a popular [prompting trick that gives insight into the psychology of GPT](https://twitter.com/karpathy/status/1624847051426234368)).
 - **OpenWebMath**, a dataset of all the mathematical documents on Common Crawl, and **Llemma**, the best open language model for mathematical reasoning.
