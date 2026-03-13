@@ -16,6 +16,25 @@
 ">
     <meta name="keywords" content="personal website, academic website, machine learning, artificial intelligence, computer science, sequence models, decision making">
 
+    <!-- OpenGraph -->
+    <meta property="og:site_name" content="Keiran  Paster">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Keiran  Paster | about">
+    <meta property="og:url" content="https://keirp.com/">
+    <meta property="og:description" content="Keiran Paster's personal website.
+">
+    
+    <meta property="og:locale" content="en">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="about">
+    <meta name="twitter:description" content="Keiran Paster's personal website.
+">
+    
+    <meta name="twitter:site" content="@keirp1">
+    <meta name="twitter:creator" content="@keirp1">
+
 
     <!-- Bootstrap & MDB -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
@@ -72,11 +91,20 @@
                 <a class="nav-link" href="/">about<span class="sr-only">(current)</span></a>
               </li>
               
+              <!-- Blog -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/blog/">blog</a>
+              </li>
 
               <!-- Other pages -->
               <li class="nav-item ">
                 
                   <a class="nav-link" href="/publications/">publications</a>
+                
+              </li>
+              <li class="nav-item ">
+                
+                  <a class="nav-link" href="/blog/index.html">blog</a>
                 
               </li>
               <li class="nav-item ">
@@ -122,7 +150,7 @@
           </div>
 
           <div class="clearfix">
-            <p>I am a fifth-year PhD candidate in the <a href="https://web.cs.toronto.edu/" rel="external nofollow noopener" target="_blank">Department of Computer Science</a> at the <a href="https://www.utoronto.ca/" rel="external nofollow noopener" target="_blank">University of Toronto</a> and I am currently on the job market.</p>
+            <p>I am a fifth-year PhD candidate (on leave) in the <a href="https://web.cs.toronto.edu/" rel="external nofollow noopener" target="_blank">Department of Computer Science</a> at the <a href="https://www.utoronto.ca/" rel="external nofollow noopener" target="_blank">University of Toronto</a> and an early employee at <a href="https://x.ai/" rel="external nofollow noopener" target="_blank">xAI</a>.</p>
 
 <ul>
   <li>I am fortunate to be advised by <a href="https://jimmylba.github.io/" rel="external nofollow noopener" target="_blank">Jimmy Ba</a> and <a href="https://www.cs.toronto.edu/~sheila/" rel="external nofollow noopener" target="_blank">Sheila McIlraith</a>.</li>
@@ -130,19 +158,17 @@
   <li>In Fall 2023, I was a student researcher at Google working on data efficiency for LLMs with the <a href="https://deepmind.google/technologies/gemini" rel="external nofollow noopener" target="_blank">Gemini</a> and <a href="https://research.google/teams/blueshift/" rel="external nofollow noopener" target="_blank">Blueshift</a> teams.</li>
 </ul>
 
-<p>My research interests lie in AI reasoning and decision-making and my goal is to create AI systems that effectively scale with compute to process the world’s information and fast-forward scientific progress.</p>
-
-<p>Research highlights from the last year include:</p>
+<p>Highlights from my time at xAI include:</p>
 
 <ul>
   <li>
-<strong>Automatic prompt engineering</strong>, which shows for the first time that when given access to trial-and-error, LLMs can control themselves through prompting often better than a human can (resulting in the discovery of a <a href="https://twitter.com/karpathy/status/1624847051426234368" rel="external nofollow noopener" target="_blank">prompting trick that gives insight into the psychology of GPT</a>).</li>
+<strong>Grok 2</strong> and <strong>Grok 2 mini</strong>, where I did the web data filtering, ablation, and data mixing efforts in the data team. I also contributed to the post-training of the <a href="https://x.com/jimmybajimmyba/status/1823600123487903883?s=20" rel="external nofollow noopener" target="_blank">“sus-column-r”</a> model, xAI’s first model on Chatbot Arena.</li>
   <li>
-<strong>STEVE-1</strong>, an instruction-following agent in Minecraft created using a novel methodology where we finetune a model pretrained on years of Minecraft videos on goal-relabeled data. STEVE-1 acts directly using keyboard and mouse input and follows open-ended text and visual instructions.</li>
+<strong>Grok 3</strong> and <strong>Grok 3 mini</strong>, where I did the web data filtering, ablation, and data mixing. Additionally, I was an initial member of the reasoning team and a core contributor to reasoning models, where I did the training and data recipes.</li>
   <li>
-<strong>OpenWebMath</strong>, 14.7B tokens of mathematical documents gathered from Common Crawl for use in LLM pretraining and midtraining. OpenWebMath improves mathematical reasoning performance over 20x more effectively per-token than general-domain data and has already been used to train several open and closed models.</li>
+<strong>Grok 4</strong>, where I led the RL data and ablation efforts as we scaled up our RL training by over 10x.</li>
   <li>
-<strong>Llemma</strong>, the strongest open 7B and 34B base models for mathematical reasoning. These models are trained for up to 200B tokens primarily of OpenWebMath and show GPT-3.5-level performance with few-shot prompting even on <a href="https://huggingface.co/datasets/keirp/hungarian_national_hs_finals_exam" rel="external nofollow noopener" target="_blank">held-out math evaluations</a>.</li>
+<strong>Grok 4 Fast</strong>, <strong>Grok 4.1</strong>, <strong>Grok 4.1 Fast</strong>, and <strong>Grok 4.20</strong>, where I led the <em>Grok Next</em> team, overseeing the reasoning and post-training teams. Some highlights during this time are our advancements in post-training, search, mathematical proofs, forecasting, and multi-agent.</li>
 </ul>
 
           </div>
@@ -505,8 +531,7 @@
 
     <!-- Footer -->    <footer class="sticky-bottom mt-5">
       <div class="container">
-        © Copyright 2024 Keiran  Paster. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme.
-Last updated: January 22, 2024.
+        © Copyright 2026 Keiran  Paster. Last updated: March 13, 2026.
       </div>
     </footer>
 
