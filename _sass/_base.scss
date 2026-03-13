@@ -63,6 +63,10 @@ blockquote {
   margin: 1.5em 10px;
   padding: 0.5em 10px;
   font-size: 1.2rem;
+
+  *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 // Math
@@ -399,7 +403,6 @@ footer.sticky-bottom {
 }
 
 .tag-list {
-  border-bottom: 1px solid var(--global-divider-color);
   text-align: center;
   padding-top: 1rem;
 
@@ -429,7 +432,6 @@ footer.sticky-bottom {
   padding: 0;
 
   li {
-    border-bottom: 1px solid var(--global-divider-color);
     list-style: none;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -995,4 +997,63 @@ nav[data-toggle="toc"] {
       color: var(--global-danger-block-title);
     }
   }
+}
+
+// Prompt blocks
+
+.prompt {
+  background-color: var(--global-bg-color);
+  border-left: 3px solid var(--global-theme-color);
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  font-family: monospace;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--global-text-color);
+  border-radius: 0 4px 4px 0;
+
+  mark {
+    background-color: #fff3a8;
+    color: inherit;
+    padding: 0.1em 0.2em;
+    border-radius: 2px;
+  }
+
+  &::before {
+    content: "Prompt";
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--global-theme-color);
+    margin-bottom: 0.4rem;
+  }
+}
+
+// Footnotes
+
+.footnotes {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--global-divider-color);
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+
+  ol {
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+figcaption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+  font-style: italic;
+  margin-top: 0.5rem;
 }

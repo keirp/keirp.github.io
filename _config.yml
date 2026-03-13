@@ -8,8 +8,7 @@ last_name: Paster
 email: keirp@cs.toronto.edu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Keiran Paster's personal website.
-footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+footer_text: ""
 keywords: personal website, academic website, machine learning, artificial intelligence, computer science, sequence models, decision making
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🎱 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
@@ -59,7 +58,7 @@ max_width: 800px
 # Open Graph & Schema.org
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: false # Include Schema.org in the HTML head
 og_image: # The site-wide (default for all links) Open Graph preview image
 
@@ -117,17 +116,17 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-# blog_name: Research Notes # blog_name will be displayed in your blog page
-# blog_nav_title: posts # your blog must have a title for it to be displayed in the nav bar
-# blog_description: some thoughts and notes on research
-# permalink: /blog/:year/:title/
+blog_name: Blog # blog_name will be displayed in your blog page
+blog_nav_title: blog # your blog must have a title for it to be displayed in the nav bar
+blog_description: # no subtitle
+permalink: /blog/:year/:title/
 
 # Pagination
 pagination:
   enabled: true
 
 related_blog_posts:
-  enabled: true
+  enabled: false
   max_related: 5
 
 # Giscus comments (RECOMMENDED)

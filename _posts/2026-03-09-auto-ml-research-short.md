@@ -1,0 +1,80 @@
+---
+layout: post
+title: Initial Experiment Using Claude Code for RL Research
+date: 2026-03-08
+description: Walking through my exploration of how the current coding agents can be used to do automatic RL research.
+og_image: https://keirp.com/assets/img/self-play-ppo/elo_curve.png
+---
+
+This week I spent some time exploring how the current generation of coding models (I used `Claude Opus 4.6` and `GPT 5.4 xhigh`) can be used to automatically carry out ML research. All of the code was written by the models and is available on [GitHub](https://github.com/keirp/self-play-ppo). During my undergrad and first year of my PhD I focused my research on multi-agent RL in zero-sum games, so as a basic test, I gave the following prompt to both Opus 4.6 in Claude Code and GPT 5.4 xhigh in the Codex app[^2]:
+
+[^2]: The prompts are all super informal and not well thought out. That's just how I interact with Claude Code!
+
+<div class="prompt">please <mark>implement self play ppo against random previous policy opponents for tic tac toe</mark>. you should setup the code, figure out the metrics that will tell you how successful your training is at producing an optimal policy, then <mark>run experiments to tune all hyperparameters</mark> and give me pdf reports with tables plots and interperetations as you apply the scientific method to creating a working self play implementation.</div>
+
+Codex (GPT 5.4 xhigh) ran for 25 minutes and solved tic-tac-toe optimally using a tabular policy with a 3-phase hyperparameter sweep. It tended toward game-specific shortcuts: symmetry encodings, and once it even distilled the minimax-optimal policy directly instead of getting the RL to work. The report it generated was not readable.
+
+Claude Code (Opus 4.6) ran for around an hour and approached the problem more similarly to how I would have done it. It implemented a small [MLP policy](https://github.com/keirp/self-play-ppo/blob/main/src/model.py) in PyTorch and ran a hyperparameter sweep over learning rate, entropy bonus, network size, opponent sampling, batch size, PPO clip epsilon, and snapshot interval (<a href="/assets/pdf/self-play-ppo-report.pdf" target="_blank"><i class="fas fa-file-pdf"></i> report</a>). The final tuned agent achieved 90% win rate vs random and 0% exploitability (100% draw rate vs minimax):
+
+<figure>
+<img src="/assets/img/self-play-ppo/final_exploitability.png" alt="Final Tuned: Exploitability" style="width: 100%;">
+<figcaption>Figure from Opus's hyperparameter tuning report.</figcaption>
+</figure>
+
+My main criticisms: the training curves are very noisy (no multiple seeds), the hyperparameters are not independent (learning rate, batch size, and architecture interact in predictable ways), and Opus tends to rationalize every result even when the data is inconclusive.
+
+## Performance Optimization
+
+Next, I tasked Opus with optimizing the training speed:
+
+<div class="prompt">now I want you to <mark>optimize the training script speed</mark>. when I say optimize, I mean performance optimization. you should not change the algorithm or any hparams. first, get a baseline run to see the wall time to run it. then, <mark>iteratively profile the run, optimize the parts of the code which are slow</mark>, and improve it. at the end, I want you to give me a report in pdf form of all the optimizations and how much time was saved with each optimization. nothing is off the table.</div>
+
+Opus profiled the code (<a href="/assets/pdf/optimization-report.pdf" target="_blank"><i class="fas fa-file-pdf"></i> report</a>), identified that game collection was 61% of the runtime, and [vectorized the environment](https://github.com/keirp/self-play-ppo/blob/main/src/environment_fast.py) (running all 512 games in parallel with NumPy) and batched the neural network forward passes (~4,600 individual calls down to ~9). This gave a 28x speedup on the collection phase and 2.57x overall:
+
+<figure>
+<img src="/assets/img/self-play-ppo/optimization_waterfall.png" alt="Optimization waterfall" style="width: 100%;">
+<figcaption>Figure from Opus's optimization report.</figcaption>
+</figure>
+
+These optimizations probably should have been standard from the start. I would have hoped Opus would implement vectorized environments and batched inference before running a hyperparameter sweep. It's likely that today's models don't have a strong sense of time.
+
+I then pushed it further:
+
+<div class="prompt"><mark>go even more low level</mark>. nothing is off the table - using different languages, not using pytorch, etc. just go super low level. as low level as you can. <mark>optimize until you are certain that you are close to the maximum speed</mark> that can be achieved on this hardware</div>
+
+Opus rewrote the [entire training pipeline in C](https://github.com/keirp/self-play-ppo/blob/main/csrc/ppo_core.c) with hand-written forward/backward passes using Apple's Accelerate BLAS, optimized for the M2 Max in my Macbook Pro (<a href="/assets/pdf/c-training-report.pdf" target="_blank"><i class="fas fa-file-pdf"></i> report</a>). It reasoned about the theoretical compute and memory bandwidth limits of the hardware and ended up at 37ms per update, which it says is 2.8x from the theoretical floor. This gave a further 14.9x speedup over the optimized PyTorch code:
+
+<figure>
+<img src="/assets/img/self-play-ppo/c_speed_comparison.png" alt="C vs PyTorch speed comparison" style="width: 100%;">
+<figcaption>Figure from Opus's C backend report.</figcaption>
+</figure>
+
+The C version initially didn't learn at all. Opus noticed this, investigated, and found three bugs: an observation encoding layout mismatch, a GAE transition ordering issue from vectorized collection, and a `-ffast-math` catastrophic cancellation bug where the compiler reordered `lg[j] + (1.0f - vm[j]) * (-1e8f)` into `(lg[j] - 1e8f) + vm[j] * 1e8f`, zeroing out every logit due to float32 precision limits. After fixing all three, the C backend converged to optimal play within 25 iterations.
+
+## Connect Four and Open-Ended Research
+
+I moved to Connect Four to increase the complexity. Initial results were weak (<a href="/assets/pdf/connect4-report.pdf" target="_blank"><i class="fas fa-file-pdf"></i> report</a>): Opus declared success despite poor performance against a simple heuristic opponent. After I suggested implementing [Elo](https://github.com/keirp/self-play-ppo/blob/main/src/elo.py) as a more stable metric, this is what the initial Elo curve looked like:
+
+<figure>
+<img src="/assets/img/self-play-ppo/elo_curve.png" alt="Connect 4 Elo curve" style="width: 100%;">
+<figcaption>Figure from Opus's Connect Four Elo report.</figcaption>
+</figure>
+
+I then gave Opus an open-ended prompt to optimize it:
+
+<div class="prompt">I want you to <mark>continue to work on optimizing the hyperparameters and training such that we can get to 2100 elo</mark> (stable, not peak). <mark>do not stop until we get to 2100 elo</mark>. please make sure to have good taste and do it in the simplest possible way. afterwards, please put together a report of everything you tried, what worked and didnt work, and final results. this may take hours of experimentation, so keep good experiment.md logs with your hypotheses and experimental results, as you may have your context compacted many times. use the scientific method, take some inspiration from papers if you must, and have fun! remember, keep things simple!</div>
+
+Opus ran for 18 hours until I told it to wrap up (<a href="/assets/pdf/c4-optimization-report.pdf" target="_blank"><i class="fas fa-file-pdf"></i> report</a>). It ran [18 experiments](https://github.com/keirp/self-play-ppo/blob/main/experiments.md) with ~40 total runs, increasing the Elo from 1600 to a peak of 1970 but falling short of the 2100 target. The biggest wins were increasing games per iteration from 512 to 2048 (+181 Elo) and adding opponent temperature of 1.5 (+84 Elo). Many other ideas like mirror augmentation, conservative clipping, entropy schedules, either hurt or had no effect.
+
+<figure>
+<img src="/assets/img/self-play-ppo/c4_exp18_detail.png" alt="Experiment 18: best config long run" style="width: 100%;">
+<figcaption>Figure from Opus's Connect Four optimization report. Note that it's optimizing based on a clearly noisy metric in peak elo.</figcaption>
+</figure>
+
+My main criticisms: it optimized peak Elo rather than a smoothed metric, most experiments were brute-force sweeps of simple hyperparameters rather than deeper investigations, and it didn't analyze _why_ the agent was losing to specific opponents.
+
+## Takeaways
+
+1. <mark>When the task is easily-evaluatable, such as performance optimization, Opus is already good enough.</mark> In the C implementation, it correctly identified that training wasn't reaching expected performance, designed a test, and dug into the code to find all three bugs - something that surprised me a bit.
+2. <mark>The model has surprisingly bad behavior in some important areas, such as evaluation and hyperparameter tuning.</mark> It uses single seeds, reports noisy metrics, and often tries an idea once and moves on without understanding why it failed. I also caught it writing scripts that run training, plot results, _and_ generate the report all in one go, meaning it wrote commentary on results it hadn't looked at.
+3. <mark>Research taste is still pretty off.</mark> Opus doesn't have a strong simplicity bias and sometimes tries overly task-specific solutions. Codex is worse for that. It also chose outdated defaults (plain ReLU MLP) that immediately improved when I suggested layernorm, residual connections, and GELU. This is something that I think could be improved through some high quality human data.
